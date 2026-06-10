@@ -107,7 +107,9 @@ async function sendMessage(message) {
       bubble.textContent = `Error: ${data.error}`;
       loadingEl.classList.add('error');
     } else {
-      bubble.textContent = data.answer || '(no response)';
+      const raw = data.answer || '(no response)';
+      bubble.innerHTML = DOMPurify.sanitize(marked.parse(raw));
+      bubble.classList.add('markdown');
       conversationHistory.push({ role: 'user', content: message });
       conversationHistory.push({ role: 'assistant', content: data.answer });
     }
