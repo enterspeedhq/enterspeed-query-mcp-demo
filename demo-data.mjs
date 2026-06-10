@@ -1,10 +1,12 @@
+// This file generates demo data for products, customers, orders, and order lines, then ingests it into Enterspeed via the API.
+// configure API keys at the top of the file, then run with `node demo-data.mjs` to generate and ingest the data. You can adjust the number of entities by changing the loop limits.
 import https from 'https';
 
 const KEYS = {
-  orders:    'source-740f0ea9-386f-42a2-baef-ddf752e8f970',
-  orderLines:'source-740f0ea9-386f-42a2-baef-ddf752e8f970',
-  products:  'source-527a7364-3ffb-48ba-8b9d-691f54b28c31',
-  customers: 'source-9fb113d6-c276-4ee9-a088-d8d0ceb0a782',
+  orders:    'source-xxx',
+  orderLines:'source-xxx',
+  products:  'source-xxx',
+  customers: 'source-xxx',
 };
 
 const rand     = (arr) => arr[Math.floor(Math.random() * arr.length)];
