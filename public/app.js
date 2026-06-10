@@ -13,10 +13,18 @@ function removeEmptyState() {
   if (el) el.remove();
 }
 
+function makeAvatar(role) {
+  const el = document.createElement('div');
+  el.className = `avatar ${role}-avatar`;
+  el.textContent = role === 'user' ? 'J' : 'ES';
+  return el;
+}
+
 function appendMessage(role, text) {
   removeEmptyState();
   const div = document.createElement('div');
   div.className = `message ${role}`;
+  div.appendChild(makeAvatar(role));
   const bubble = document.createElement('div');
   bubble.className = 'bubble';
   bubble.textContent = text;
@@ -30,6 +38,7 @@ function appendLoadingMessage() {
   removeEmptyState();
   const div = document.createElement('div');
   div.className = 'message assistant loading';
+  div.appendChild(makeAvatar('assistant'));
   const bubble = document.createElement('div');
   bubble.className = 'bubble';
   bubble.innerHTML = '<span class="loading-dots"><span>●</span><span>●</span><span>●</span></span>';
