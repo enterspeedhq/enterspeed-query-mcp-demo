@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterspeed Query Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Enterspeed Query Chat</h1>
+      <p class="subtitle">Ask questions about your Enterspeed data — powered by Claude</p>
+    </header>
+
+    <div class="chat-window" id="chatWindow">
+      <div class="empty-state" id="emptyState">
+        Start by asking a question about your Enterspeed content.<br>
+        <small>Try: "List the indices I have access to"</small>
+      </div>
+    </div>
+
+    <div class="tool-trace" id="toolTrace" hidden>
+      <details>
+        <summary id="toolTraceSummary">Tool calls</summary>
+        <div id="toolTraceContent"></div>
+      </details>
+    </div>
+
+    <form class="input-area" id="chatForm">
+      <textarea
+        id="messageInput"
+        placeholder="Ask something about your Enterspeed data…"
+        rows="3"
+        autofocus
+      ></textarea>
+      <button type="submit" id="sendBtn">Send</button>
+    </form>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
