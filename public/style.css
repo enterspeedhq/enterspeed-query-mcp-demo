@@ -67,6 +67,27 @@ header {
   margin-top: 0.15rem;
 }
 
+header #clearBtn {
+  margin-left: auto;
+  padding: 0.45rem 1rem;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+  font-size: 0.825rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+header #clearBtn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
 /* ── Chat window ────────────────────────────────────────── */
 .chat-window {
   background: #f7f8fc;
@@ -81,16 +102,67 @@ header {
 }
 
 .empty-state {
-  color: #a0a8b8;
-  font-style: italic;
-  text-align: center;
   margin: auto;
-  line-height: 1.9;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
 }
 
-.empty-state small {
-  font-size: 0.8rem;
-  color: #c4cad8;
+.empty-heading {
+  color: #a0a8b8;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.suggestion-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.suggestion {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: #fff;
+  border: 1.5px solid #e4e6ed;
+  border-radius: 14px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: #374151;
+  line-height: 1.5;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+}
+
+.suggestion:hover {
+  border-color: #2b2b6a;
+  box-shadow: 0 2px 12px rgba(43, 43, 106, 0.1);
+  transform: translateY(-1px);
+  color: #1a1a38;
+}
+
+.suggestion:active { transform: translateY(0); }
+
+.suggestion-text { flex: 1; }
+
+.suggestion-arrow {
+  color: #a0a8b8;
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: color 0.15s, transform 0.15s;
+  margin-top: 1px;
+}
+
+.suggestion:hover .suggestion-arrow {
+  color: #2b2b6a;
+  transform: translateX(2px);
 }
 
 /* ── Messages ───────────────────────────────────────────── */

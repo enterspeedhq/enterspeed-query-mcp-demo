@@ -2,16 +2,50 @@ const chatWindow = document.getElementById('chatWindow');
 const chatForm = document.getElementById('chatForm');
 const messageInput = document.getElementById('messageInput');
 const sendBtn = document.getElementById('sendBtn');
+const clearBtn = document.getElementById('clearBtn');
 const toolTrace = document.getElementById('toolTrace');
 const toolTraceSummary = document.getElementById('toolTraceSummary');
 const toolTraceContent = document.getElementById('toolTraceContent');
 
 const conversationHistory = [];
 
+const SUGGESTIONS = [
+  'How many orders do I have? Please break them down by status.',
+  'Which customer segment generated the most revenue from completed orders? Break it down by product category.',
+  'Which countries have the highest refund or cancellation rate? Is any product category driving the problem?',
+  'Who are the top 3 customers by gross margin generated from completed orders? Show their segment and country.',
+  'Which two products appear together in the same completed order most often?',
+];
+
 function removeEmptyState() {
   const el = document.getElementById('emptyState');
   if (el) el.remove();
 }
+
+function buildEmptyState() {
+  const el = document.getElementById('emptyState');
+  if (!el) return;
+
+  const heading = document.createElement('p');
+  heading.className = 'empty-heading';
+  heading.textContent = 'Ask a question about your Enterspeed data, or pick one below';
+
+  const grid = document.createElement('div');
+  grid.className = 'suggestion-grid';
+
+  SUGGESTIONS.forEach((prompt) => {
+    const btn = document.createElement('button');
+    btn.className = 'suggestion';
+    btn.innerHTML = `<span class="suggestion-text">${prompt}</span><span class="suggestion-arrow">→</span>`;
+    btn.addEventListener('click', () => sendMessage(prompt));
+    grid.appendChild(btn);
+  });
+
+  el.appendChild(heading);
+  el.appendChild(grid);
+}
+
+buildEmptyState();
 
 function makeAvatar(role) {
   const el = document.createElement('div');
@@ -133,6 +167,14 @@ async function sendMessage(message) {
     chatWindow.scrollTop = chatWindow.scrollHeight;
   }
 }
+
+clearBtn.addEventListener('click', () => {
+  conversationHistory.length = 0;
+  chatWindow.innerHTML = '<div class="empty-state" id="emptyState"></div>';
+  toolTrace.hidden = true;
+  buildEmptyState();
+  messageInput.focus();
+});
 
 chatForm.addEventListener('submit', (e) => {
   e.preventDefault();

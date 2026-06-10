@@ -14,13 +14,11 @@
         <h1>Enterspeed Query Chat</h1>
         <p class="subtitle">Ask questions about your Enterspeed data — powered by Claude</p>
       </div>
+      <button id="clearBtn" title="Clear conversation">New chat</button>
     </header>
 
     <div class="chat-window" id="chatWindow">
-      <div class="empty-state" id="emptyState">
-        Start by asking a question about your Enterspeed content.<br>
-        <small>Try: "List the indices I have access to"</small>
-      </div>
+      <div class="empty-state" id="emptyState"></div>
     </div>
 
     <div class="tool-trace" id="toolTrace" hidden>
