@@ -1,8 +1,8 @@
 // This file generates demo data for products, customers, orders, and order lines, then ingests it into Enterspeed via the API.
-// configure API keys at the top of the file, then run with `node demo-data.mjs` to generate and ingest the data. You can adjust the number of entities by changing the loop limits.
+// configure API SOURCEKEYS at the top of the file, then run with `node demo-data.mjs` to generate and ingest the data. You can adjust the number of entities by changing the loop limits.
 import https from 'https';
 
-const KEYS = {
+const SOURCEKEYS = {
   orders:    'source-xxx',
   orderLines:'source-xxx',
   products:  'source-xxx',
@@ -214,9 +214,9 @@ async function ingestAll(label, entities, apiKey) {
 
 (async () => {
   console.log('\n=== Starting Enterspeed ingest ===\n');
-  await ingestAll('products',    products,    KEYS.products);
-  await ingestAll('customers',   customers,   KEYS.customers);
-  await ingestAll('orders',      orders,      KEYS.orders);
-  await ingestAll('order lines', orderLines,  KEYS.orderLines);
+  await ingestAll('products',    products,    SOURCEKEYS.products);
+  await ingestAll('customers',   customers,   SOURCEKEYS.customers);
+  await ingestAll('orders',      orders,      SOURCEKEYS.orders);
+  await ingestAll('order lines', orderLines,  SOURCEKEYS.orderLines);
   console.log('\n=== All done ===');
 })();

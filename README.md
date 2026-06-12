@@ -30,6 +30,8 @@ A chat UI that connects Claude AI to the [Enterspeed Query MCP server](https://m
 
 3. *(First run only)* Ingest synthetic demo data into Enterspeed:
 
+     Open the demo-data.mjs file and set the source keys. Then run the following command to ingest the data into Enterspeed:
+
    ```bash
    node demo-data.mjs
    ```
